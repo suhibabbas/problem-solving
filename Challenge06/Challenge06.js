@@ -12,7 +12,7 @@
 const findMax = (arr)=>{
     let max;
     max =0;
-    for (let i = 0; i <= arr.length ; i++){
+    for (let i = 0; i < arr.length ; i++){
         if (arr[i]> max){
             max = arr[i];
         }
@@ -31,27 +31,29 @@ const findMax = (arr)=>{
 
 const sumNums = (arr)=>{
     let sum;
-    // write your code here
     return sum;
 }
 
-// 3) ---------------------
-// 
-//  using the (reverseArray) function; return provided array reversed
-//  without using build-in functions
-//  EX:
-//  ['C#', 'JS', 'Ruby','Python' ] ==> ['Python','Ruby','JS','C#']
-// 
-// ------------------------
+// // 3) ---------------------
+// // 
+// //  using the (reverseArray) function; return provided array reversed
+// //  without using build-in functions
+// //  EX:
+// //  ['C#', 'JS', 'Ruby','Python' ] ==> ['Python','Ruby','JS','C#']
+// // 
+// // ------------------------
 const reverseArray = (arr)=>{
-    let arr2 =[];
-    
-    for (let i = arr.length ; i >=0;i--){
-        for(let j = 0; j < arr2.length+1;j++ ){
-            arr2[j]=arr[i];
-        }
+    let start = 0 
+   let end = arr.length - 1 
+    while (start < end) {
+        // swap arr[start] and arr[end]
+        let temp = arr[start]
+        arr[start] = arr[end]
+        arr[end] = temp
+        start = start + 1
+        end = end - 1
     }
-    arr =arr2;
+    return arr;
 }
 
 module.exports = {findMax , sumNums, reverseArray};
