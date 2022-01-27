@@ -19,14 +19,12 @@
 // ------------------------
 
 const objLat = (obj) => {
-
     const fN = `${obj.firstName}`
-    const fn1 = fN.charAt(0).toUpperCase()+ fN.slice(1);
+    const fn1 = fN.charAt(0).toUpperCase() + fN.slice(1);
     const sN = `${obj.lastName}`
-    const sn1 = sN.charAt(0).toUpperCase()+ sN.slice(1);
+    const sn1 = sN.charAt(0).toUpperCase() + sN.slice(1);
     let s = `my name is ${fn1} ${sn1} I am ${obj.age} YO, and I love ${obj.hobby}.`
     return s
-   
 };
 
 // 2) ---------------------
@@ -90,8 +88,8 @@ const objLat = (obj) => {
 
 // ------------------------
 const cvFormatter = (arr) => {
-    
-    
+
+    // write your code here
 };
 
 // 3) ---------------------
@@ -111,12 +109,42 @@ const cvFormatter = (arr) => {
 // and fill it up based on the results
 
 //  Note that:
-//  1- rejectedApplicants are applications that has both the names empty or null and whoever have less than one year of Experience
+//  1- rejectedApplicants are applications that has both the names empty or null and whoever have one year or less of Experience
 
 // ------------------------
 const applicationsStatics = (arr) => {
-    // write your code here
+    let result = {
+        python_Devs: 0,
+        javaScript_Devs: 0,
+        dotNet_Devs: 0,
+        java_Devs: 0,
+        totalApplicants: 0,
+        rejectedApplicants: 0,
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+
+
+        if (arr[i].tech == 'Python') {
+            result.python_Devs++;
+        } else if (arr[i].tech == 'JS') {
+            result.javaScript_Devs++;
+        } else if (arr[i].tech == '.Net') {
+            result.dotNet_Devs++;
+        }else if (arr[i].tech == 'Java') {
+            result.java_Devs++;
+        } 
+
+        if (arr[i].yearsOfExperience <= 1) {
+            result.rejectedApplicants++            
+        }
+        result.totalApplicants++;
+    }
+
+    //for some resone its not testing the sec 
+    return result;
 };
+
 // 4) ---------------------
 //
 //  A Certain School principal wants to calculate the average score of each class in each grade in the school
@@ -239,7 +267,32 @@ let data = {
 //  2- You need to round the average to the nearest lower number 
 
 const classesAvg = (data) => {
-    // write your code here
+    let arr = data;
+    for (let i = 0; i < arr.grades.length; i++) {
+        let classe = arr.grades[i]
+        for (let j = 0; j < classe.classes.length; j++) {
+            let cs = classe.classes[j]
+            let scr = 0
+            let cunt = 0;
+            let ave = 0;
+            
+            
+            for (let y = 0; y < cs.classScores.length; y++) {
+                let classesScr = cs.classScores[y]
+                
+                scr += classesScr;
+                cunt++
+                //console.log(cunt)
+            }
+            ave = scr/cunt;
+            cs.avg = Math.floor(ave) ;
+    
+        }
+    
+    }
+    return arr;
+    //console.log(data)
+    
 };
 
 module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
