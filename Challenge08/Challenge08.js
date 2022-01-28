@@ -27,7 +27,12 @@
 // -------------------------------------------------------------------------------------------------------
 
 const customerAndAge = (obj) => {
-  // write your code here
+  let arr =[];
+
+for(const key in obj){
+    arr.push(`Customer Name :${key} , Age :${obj[key]}`)
+}
+return arr;
 };
 
 // -------------------------------------------------------------------------------------------------------
@@ -65,7 +70,7 @@ const getEntries = (obj) => {
   const keys = Object.keys(recipeInfo);
   
   
-  console.log(keys);
+  //console.log(keys);
   
   let arr =[];
   keys.forEach((key, index) => {
@@ -112,7 +117,16 @@ const courses = [
 const getInfo = (arr) => {
   let coursesName = [];
   let studentsName = [];
-  // write your code here
+
+
+  for(const key in courses){
+    for(const key2 in courses[key].Students){
+      studentsName.push(`${courses[key].Students[key2]}`)
+
+    }
+  coursesName.push(`${courses[key].course}`)
+ // studentsName.push(`${courses[key].Students}`)
+}
 
   return { coursesName, studentsName };
 };
